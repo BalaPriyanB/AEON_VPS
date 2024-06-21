@@ -447,8 +447,8 @@ xnox_client = qbClient(
         )
     },
     HTTPADAPTER_ARGS={
-        "pool_maxsize": 500,
-        "max_retries": 10,
+        "pool_maxsize": 25,
+        "max_retries": 5,
         "pool_block": True,
     },
 )
@@ -488,7 +488,7 @@ else:
     qb_opt = {**qbit_options}
     xnox_client.app_set_preferences(qb_opt)
 
-bot = tgClient('bot', TELEGRAM_API, TELEGRAM_HASH, bot_token = BOT_TOKEN, workers = 1000, parse_mode = enums.ParseMode.HTML).start()
+bot = tgClient('bot', TELEGRAM_API, TELEGRAM_HASH, bot_token = BOT_TOKEN, workers = 100, parse_mode = enums.ParseMode.HTML).start()
 bot_loop = bot.loop
 bot_name = bot.me.username
 scheduler = AsyncIOScheduler(timezone = str(get_localzone()), event_loop = bot_loop)
